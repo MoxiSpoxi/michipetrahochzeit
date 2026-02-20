@@ -8,8 +8,8 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #FDF8F3;
-  color: #4A4A4A;
+  background-color: #fff;
+  color: #1e3a8a; /* Tailwind blue-900 */
 }
 
 .font-display {
@@ -26,14 +26,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FDF8F3;
+  background: #fff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C9A962;
+  background: #1e3a8a;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E5D4A1;
+  background: #3b82f6; /* blue-500 */
 }

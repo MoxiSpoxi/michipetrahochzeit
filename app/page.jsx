@@ -32,15 +32,15 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="font-hand text-2xl text-wine"
+              className="font-hand text-2xl text-blue-900 font-bold"
             >
               P & M
             </motion.div>
@@ -51,7 +51,7 @@ export default function Home() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-600 hover:text-wine transition-colors duration-300 font-display text-lg"
+                  className="text-blue-900 hover:text-blue-700 transition-colors duration-300 font-display text-lg font-bold"
                 >
                   {item.label}
                 </button>
@@ -60,7 +60,7 @@ export default function Home() {
 
             {/* Mobile Menu Button */}
             <button 
-              className="md:hidden text-wine"
+              className="md:hidden text-blue-900"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +87,7 @@ export default function Home() {
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
-                      className="text-gray-600 hover:text-wine transition-colors duration-300 font-display text-lg text-left"
+                      className="text-blue-900 hover:text-blue-700 transition-colors duration-300 font-display text-lg text-left font-bold"
                     >
                       {item.label}
                     </button>
