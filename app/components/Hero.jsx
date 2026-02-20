@@ -28,7 +28,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="font-display text-lg md:text-xl text-blue-900 tracking-widest uppercase mb-4">
+          <p className="font-bold text-lg md:text-xl text-blue-900 tracking-widest uppercase mb-4">
             Wir heiraten!
           </p>
         </motion.div>
@@ -39,7 +39,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.3 }}
           className="mb-6"
         >
-          <h1 className="font-hand text-6xl md:text-8xl lg:text-9xl text-wine leading-none">
+          <h1 className="font-bold text-6xl md:text-8xl lg:text-9xl text-blue-900 leading-none">
             Petra
           </h1>
           <div className="flex items-center justify-center gap-4 my-2">
