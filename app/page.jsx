@@ -19,10 +19,12 @@ export default function Home() {
   ]
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => setIsMenuOpen(false), 400); // Menü nach Scroll schließen
+      const yOffset = -70; // Höhe der Navbar (ggf. anpassen)
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      setTimeout(() => setIsMenuOpen(false), 400);
     } else {
       setIsMenuOpen(false);
     }
