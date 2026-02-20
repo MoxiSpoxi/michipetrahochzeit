@@ -21,9 +21,10 @@ export default function Home() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const yOffset = -70; // Höhe der Navbar (ggf. anpassen)
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      const rect = element.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const elementMiddle = rect.top + scrollTop + rect.height / 2 - window.innerHeight / 2;
+      window.scrollTo({ top: elementMiddle, behavior: 'smooth' });
       setTimeout(() => setIsMenuOpen(false), 400);
     } else {
       setIsMenuOpen(false);
