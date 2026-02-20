@@ -40,7 +40,7 @@ export default function Countdown() {
   ]
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-20 px-4 bg-gradient-to-b from-cream to-rose/20">
+    <div className="min-h-screen flex items-center justify-center py-20 px-4 bg-gradient-to-b from-white to-blue-100">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,10 +48,10 @@ export default function Countdown() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-display text-4xl md:text-5xl text-wine mb-4">
+          <h2 className="font-display text-4xl md:text-5xl text-blue-900 font-bold mb-4">
             Der große Tag kommt näher
           </h2>
-          <p className="font-display text-lg text-gray-500 mb-12">
+          <p className="font-display text-lg text-blue-700 mb-12">
             Wir können es kaum erwarten, mit euch zu feiern!
           </p>
         </motion.div>
@@ -64,12 +64,12 @@ export default function Countdown() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/50 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg border border-rose/30"
+              className="bg-white/50 backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg border border-blue-300"
             >
-              <div className="font-hand text-4xl md:text-6xl text-wine mb-2">
+              <div className="font-hand text-4xl md:text-6xl text-blue-900 mb-2 font-bold">
                 {String(unit.value).padStart(2, '0')}
               </div>
-              <div className="font-display text-sm md:text-base text-gray-500 uppercase tracking-wider">
+              <div className="font-display text-sm md:text-base text-blue-700 uppercase tracking-wider">
                 {unit.label}
               </div>
             </motion.div>
@@ -84,7 +84,7 @@ export default function Countdown() {
           className="flex justify-center"
         >
           <div className="relative">
-            <span className="text-gold text-6xl">♥</span>
+            <span className="text-blue-300 text-6xl">♥</span>
           </div>
         </motion.div>
       </div>
