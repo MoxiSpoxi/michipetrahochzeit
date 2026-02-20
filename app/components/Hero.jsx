@@ -5,8 +5,15 @@ import { motion } from 'framer-motion'
 export default function Hero() {
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Blasses Hintergrundbild */}
+      <img 
+        src="/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.39.jpeg"
+        alt="Petra und Michi Header"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-20 z-0 pointer-events-none select-none"
+        style={{ filter: 'blur(2px)' }}
+      />
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 z-10">
         <div className="absolute top-10 left-10 text-rose text-6xl">♥</div>
         <div className="absolute top-40 right-20 text-gold text-4xl">✦</div>
         <div className="absolute bottom-40 left-20 text-rose-dark text-5xl">♥</div>
