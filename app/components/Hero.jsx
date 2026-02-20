@@ -9,8 +9,8 @@ export default function Hero() {
       <img 
         src="/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.39.jpeg"
         alt="Petra und Michi Header"
-        className="absolute inset-0 w-full h-full object-cover object-left opacity-35 z-0 pointer-events-none select-none"
-        style={{ filter: 'blur(2px)' }}
+        className="absolute inset-0 w-full h-full object-cover object-left opacity-50 z-0 pointer-events-none select-none"
+        style={{ filter: 'blur(1px)' }}
       />
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10 z-10">
