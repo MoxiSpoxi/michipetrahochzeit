@@ -21,9 +21,11 @@ export default function Home() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => setIsMenuOpen(false), 400); // Menü nach Scroll schließen
+    } else {
+      setIsMenuOpen(false);
     }
-    setIsMenuOpen(false)
   }
 
   return (
