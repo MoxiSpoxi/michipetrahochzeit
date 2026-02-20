@@ -39,7 +39,7 @@ export default function Details() {
   ]
 
   return (
-    <div className="min-h-screen py-20 px-4 bg-gradient-to-b from-rose/20 to-cream">
+    <div className="min-h-screen py-20 px-4 bg-gradient-to-b from-blue-100 to-white">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,10 +48,10 @@ export default function Details() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl text-wine mb-4">
+          <h2 className="font-display text-4xl md:text-5xl text-blue-900 font-bold mb-4">
             Die Details
           </h2>
-          <p className="font-display text-lg text-gray-500">
+          <p className="font-display text-lg text-blue-700">
             So wird unser großer Tag ablaufen
           </p>
         </motion.div>
@@ -64,7 +64,7 @@ export default function Details() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-rose/30 hover:border-gold/50 transition-colors duration-300"
+              className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-300 hover:border-blue-900 transition-colors duration-300"
             >
               <div className="text-4xl mb-4">{detail.icon}</div>
               <h3 className="font-display text-2xl text-wine mb-2">

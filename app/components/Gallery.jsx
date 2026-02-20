@@ -19,7 +19,7 @@ export default function Gallery() {
   ]
 
   return (
-    <div className="min-h-screen py-20 px-4 bg-gradient-to-b from-cream to-rose/20">
+    <div className="min-h-screen py-20 px-4 bg-gradient-to-b from-white to-blue-100">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,10 +28,10 @@ export default function Gallery() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl text-wine mb-4">
+          <h2 className="font-display text-4xl md:text-5xl text-blue-900 font-bold mb-4">
             Unsere Galerie
           </h2>
-          <p className="font-display text-lg text-gray-500">
+          <p className="font-display text-lg text-blue-700">
             Momente, die wir für immer in unseren Herzen tragen
           </p>
         </motion.div>
@@ -64,7 +64,7 @@ export default function Gallery() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-center mt-12"
         >
-          <p className="font-hand text-2xl text-gold">
+          <p className="font-hand text-2xl text-blue-300">
             ♥ Mehr Bilder folgen nach dem großen Tag ♥
           </p>
         </motion.div>
@@ -92,13 +92,13 @@ export default function Gallery() {
                 alt={selectedImage.alt}
                 className="max-w-full max-h-[90vh] object-contain rounded-lg"
               />
-              <p className="text-center text-white mt-4 font-display text-lg">
+              <p className="text-center text-blue-900 mt-4 font-display text-lg font-bold">
                 {selectedImage.alt}
               </p>
             </motion.div>
             
             <button 
-              className="absolute top-4 right-4 text-white text-4xl hover:text-gold transition-colors"
+              className="absolute top-4 right-4 text-blue-900 text-4xl hover:text-blue-300 transition-colors"
               onClick={() => setSelectedImage(null)}
             >
               ×
