@@ -57,8 +57,11 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <p className="font-display text-2xl md:text-3xl text-blue-900 italic mb-8 font-bold">
+          <p className="font-display text-2xl md:text-3xl text-blue-900 italic mb-2 font-bold">
             22. August 2026
+          </p>
+          <p className="font-display text-lg md:text-xl text-blue-700 mb-8">
+            Treffpunkt: 10.30 Uhr auf dem Dorfplatz vor der Kirche Terlan
           </p>
         </motion.div>
 
