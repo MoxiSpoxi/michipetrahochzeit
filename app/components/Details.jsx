@@ -8,17 +8,8 @@ export default function Details() {
       icon: "📍",
       title: "ES GEHT LOS!",
       time: "14:00 Uhr",
-      location: "Kirche Sankte Maria",
-      address: "Musterstraße 123, 12345 Musterstadt",
-      description: "Wir freuen uns auf unsere Trauung in der wunderschönen Kirche."
-    },
-    {
-      icon: "🥂",
-      title: "Die Feier",
-      time: "17:00 Uhr",
-      location: "Schloss Rosenblüte",
-      address: "Schlossweg 45, 12345 Musterstadt",
-      description: "Im Anschluss laden wir euch herzlich zur Feier ins Schloss ein."
+      location: "Pfarrkirche Mariä Himmelfahrt Terlan",
+      description: "Liebe Gäste, bitte findet euch um 10:30 Uhr beim Dorfplatz vor der Pfarrkirche Mariä Himmelfahrt in Terlan ein. Ankunft der Braut geplant für...ja, wenn P<etra dann halt soweit ist. 😉 Oje, ihr Weg führt direkt am Wieterer vorbei, d.h. es kann - sagen wir mal - sich etwas verzögern..., aber für einen letzten Monte al volo als unverheiratete Frau muss auf jeden Fall Zeit sein ;) ",
     },
     {
       icon: "🍽️",
@@ -48,13 +39,13 @@ export default function Details() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          // ...existing code...
-          <p className="font-display text-lg text-blue-700 whitespace-pre-line">
-            Wir trauen uns - jetzt passiert's, 
-            am 22. August 2026 eskaliert's (sowieso)
-            Wir laden euch ganz herzlich ein, 
-            Vollgas dabei zu sein! 🎉🥳🥂
-            Wir können es kaum erwarten, diesen besonderen Tag mit euch zu verbringen! 🥳
+     
+          <p className="font-display text-lg text-blue-700">
+            Wir trauen uns - jetzt passiert's,<br />
+            am 22. August 2026 eskaliert's (sowieso)<br />
+            Wir laden euch ganz herzlich ein,<br />
+            Vollgas dabei zu sein! 🎉🥳🥂<br />
+            Wir können es kaum erwarten, diesen besonderen Tag mit euch zu verbringen! 🥳<br />
             Hier bekommt ihr schon mal einen kleinen Vorgeschmack darauf, wie wir uns das große Spektakel vorstellen – Spoiler: Es wird wunderbar, vielleicht ein bisschen verrückt und auf jeden Fall unvergesslich!
           </p>
         </motion.div>
