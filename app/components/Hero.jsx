@@ -28,8 +28,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="font-display text-lg md:text-xl text-blue-900 tracking-widest uppercase mb-4">
-            Wir heiraten!
+          <p className="font-display text-lg md:text-xl text-blue-900 tracking-widest uppercase mb-8">
+            Wir trauen uns!
           </p>
         </motion.div>
 
