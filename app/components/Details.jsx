@@ -49,6 +49,8 @@ export default function Details() {
             Vollgas dabei zu sein! 🎉🥳🥂<br />
             <br />
             <br />
+            </p>
+            <p className="font-display text-lg text-blue-700">
             Wir können es kaum erwarten, diesen besonderen Tag mit euch zu verbringen! 🥳<br />
             Hier bekommt ihr schon mal einen kleinen Vorgeschmack darauf, wie wir uns das große Spektakel vorstellen – Spoiler: Es wird wunderbar, vielleicht ein bisschen verrückt und auf jeden Fall unvergesslich!
           </p>
