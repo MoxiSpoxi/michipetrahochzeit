@@ -6,16 +6,19 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null)
 
-  // Placeholder images using unsplash
+  // Unsere Hochzeitsbilder
   const images = [
-    { id: 1, src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop', alt: 'Hochzeitspaar' },
-    { id: 2, src: 'https://images.unsplash.com/photo-1511285560982-1356c11d4606?w=800&h=600&fit=crop', alt: 'Ringe' },
-    { id: 3, src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&h=600&fit=crop', alt: 'Tischdekoration' },
-    { id: 4, src: 'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=800&h=600&fit=crop', alt: 'Brautstrauß' },
-    { id: 5, src: 'https://images.unsplash.com/photo-1522673607200-1645062cd495?w=800&h=600&fit=crop', alt: 'Hochzeitstorte' },
-    { id: 6, src: 'https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&h=600&fit=crop', alt: 'Blumen' },
-    { id: 7, src: 'https://images.unsplash.com/photo-1507504038406-6b74c2a0fb42?w=800&h=600&fit=crop', alt: 'Kerzen' },
-    { id: 8, src: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&h=600&fit=crop', alt: 'Liebesbrief' },
+    { id: 1, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.38.jpeg', alt: 'Bild 1' },
+    { id: 2, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.39.jpeg', alt: 'Bild 2' },
+    { id: 3, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.40.jpeg', alt: 'Bild 3' },
+    { id: 4, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.41.jpeg', alt: 'Bild 4' },
+    { id: 5, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.42.jpeg', alt: 'Bild 5' },
+    { id: 6, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.43.jpeg', alt: 'Bild 6' },
+    { id: 7, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.44.jpeg', alt: 'Bild 7' },
+    { id: 8, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.45.jpeg', alt: 'Bild 8' },
+    { id: 9, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.46.jpeg', alt: 'Bild 9' },
+    { id: 10, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.47.jpeg', alt: 'Bild 10' },
+    { id: 11, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.48.jpeg', alt: 'Bild 11' },
   ]
 
   return (
