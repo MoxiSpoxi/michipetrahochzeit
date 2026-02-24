@@ -9,7 +9,7 @@ export default function Details() {
       title: "ES GEHT LOS!",
       time: "14:00 Uhr",
       location: "Pfarrkirche Mariä Himmelfahrt Terlan",
-      description: "Liebe Gäste, bitte findet euch um 10:30 Uhr beim Dorfplatz vor der Pfarrkirche Mariä Himmelfahrt in Terlan ein. Ankunft der Braut geplant für...ja, wenn P<etra dann halt soweit ist. 😉 Oje, ihr Weg führt direkt am Wieterer vorbei, d.h. es kann - sagen wir mal - sich etwas verzögern..., aber für einen letzten Monte al volo als unverheiratete Frau muss auf jeden Fall Zeit sein ;) ",
+      description: "Liebe Gäste, bitte findet euch um 10:30 Uhr beim Dorfplatz vor der Pfarrkirche Mariä Himmelfahrt in Terlan ein. Ankunft der Braut geplant für...ja, wenn Petra dann halt soweit ist. 😉 Oje, ihr Weg führt direkt am Wieterer vorbei, d.h. es kann - sagen wir mal - sich etwas verzögern..., aber für einen letzten Monte al volo als unverheiratete Frau muss auf jeden Fall Zeit sein ;) ",
     },
     {
       icon: "🍽️",
@@ -45,6 +45,8 @@ export default function Details() {
             am 22. August 2026 eskaliert's (sowieso)<br />
             Wir laden euch ganz herzlich ein,<br />
             Vollgas dabei zu sein! 🎉🥳🥂<br />
+            <br />
+            <br />
             Wir können es kaum erwarten, diesen besonderen Tag mit euch zu verbringen! 🥳<br />
             Hier bekommt ihr schon mal einen kleinen Vorgeschmack darauf, wie wir uns das große Spektakel vorstellen – Spoiler: Es wird wunderbar, vielleicht ein bisschen verrückt und auf jeden Fall unvergesslich!
           </p>
@@ -58,22 +60,22 @@ export default function Details() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-300 hover:border-blue-900 transition-colors duration-300"
+              className="bg-blue-100/80 rounded-2xl p-8 shadow-xl border border-blue-300 hover:border-blue-900 transition-colors duration-300 backdrop-blur-sm"
             >
-              <div className="text-4xl mb-4">{detail.icon}</div>
-              <h3 className="font-display text-2xl text-wine mb-2">
+              <div className="text-4xl mb-4 text-blue-900 drop-shadow-lg">{detail.icon}</div>
+              <h3 className="font-display text-2xl text-blue-900 font-bold mb-2">
                 {detail.title}
               </h3>
-              <p className="font-display text-lg text-gold mb-3">
+              <p className="font-display text-lg text-blue-700 mb-3">
                 {detail.time}
               </p>
-              <p className="font-sans text-gray-600 font-medium mb-2">
+              <p className="font-sans text-blue-800 font-medium mb-2">
                 {detail.location}
               </p>
-              <p className="font-sans text-sm text-gray-500 mb-4">
+              <p className="font-sans text-sm text-blue-600 mb-4">
                 {detail.address}
               </p>
-              <p className="font-display text-gray-600 italic">
+              <p className="font-display text-blue-900 italic">
                 {detail.description}
               </p>
             </motion.div>
