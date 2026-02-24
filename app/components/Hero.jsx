@@ -60,9 +60,7 @@ export default function Hero() {
           <p className="font-display text-2xl md:text-3xl text-blue-900 italic mb-2 font-bold">
             22. August 2026
           </p>
-          <p className="font-display text-lg md:text-xl text-blue-700 mb-8">
-            Treffpunkt: 10.30 Uhr auf dem Dorfplatz vor der Kirche Terlan
-          </p>
+         
         </motion.div>
 
         <motion.div

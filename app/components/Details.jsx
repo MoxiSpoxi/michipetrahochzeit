@@ -6,9 +6,9 @@ export default function Details() {
   const details = [
     {
       icon: "📍",
-      title: "Die Zeremonie",
+      title: "ES GEHT LOS!",
       time: "14:00 Uhr",
-      location: "Kirche Sankt Maria",
+      location: "Kirche Sankte Maria",
       address: "Musterstraße 123, 12345 Musterstadt",
       description: "Wir freuen uns auf unsere Trauung in der wunderschönen Kirche."
     },
@@ -48,12 +48,12 @@ export default function Details() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl text-blue-900 font-bold mb-4">
-            Die Details
-          </h2>
+          // ...existing code...
           <p className="font-display text-lg text-blue-700 whitespace-pre-line">
-            Wir trauen uns - jetzt passiert's, am 22. August 2026 eskaliert's (sowieso)
-            Wir laden dich ganz herzlich ein, Vollgas dabei zu sein! 🎉🥳🥂
+            Wir trauen uns - jetzt passiert's, 
+            am 22. August 2026 eskaliert's (sowieso)
+            Wir laden euch ganz herzlich ein, 
+            Vollgas dabei zu sein! 🎉🥳🥂
             Wir können es kaum erwarten, diesen besonderen Tag mit euch zu verbringen! 🥳
             Hier bekommt ihr schon mal einen kleinen Vorgeschmack darauf, wie wir uns das große Spektakel vorstellen – Spoiler: Es wird wunderbar, vielleicht ein bisschen verrückt und auf jeden Fall unvergesslich!
           </p>
