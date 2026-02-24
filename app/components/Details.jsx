@@ -7,7 +7,7 @@ export default function Details() {
     {
       icon: "📍",
       title: "ES GEHT LOS!",
-      time: "14:00 Uhr",
+      time: "11:00 Uhr",
       location: "Pfarrkirche Mariä Himmelfahrt Terlan",
       description: "Liebe Gäste, bitte findet euch um 10:30 Uhr beim Dorfplatz vor der Pfarrkirche Mariä Himmelfahrt in Terlan ein. Ankunft der Braut geplant für...ja, wenn Petra dann halt soweit ist. 😉 Oje, ihr Weg führt direkt am Wieterer vorbei, d.h. es kann - sagen wir mal - sich etwas verzögern..., aber für einen letzten Monte al volo als unverheiratete Frau muss auf jeden Fall Zeit sein ;) ",
     },
@@ -39,8 +39,10 @@ export default function Details() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
+
+
      
-          <p className="font-display text-lg text-blue-700">
+          <p className="font-display text-2xl md:text-3xl text-blue-900 font-bold">
             Wir trauen uns - jetzt passiert's,<br />
             am 22. August 2026 eskaliert's (sowieso)<br />
             Wir laden euch ganz herzlich ein,<br />
