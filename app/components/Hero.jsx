@@ -24,11 +24,12 @@ export default function Hero() {
 
       <div className="text-center px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="-mt-20 md:-mt-32"
         >
-          <p className="font-display text-lg md:text-xl text-blue-900 tracking-widest uppercase mb-8">
+          <p className="font-display text-3xl md:text-5xl lg:text-6xl text-blue-900 tracking-widest uppercase mb-4 font-bold">
             Wir trauen uns!
           </p>
         </motion.div>
