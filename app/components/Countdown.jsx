@@ -2,9 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useConfig } from '../context/WeddingConfigContext'
 
 export default function Countdown() {
-  const weddingDate = new Date('2026-08-22T14:00:00')
+  const { config } = useConfig()
+  const { countdown } = config
+  
+  const weddingDate = new Date(countdown.weddingDate)
   
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
 
@@ -48,11 +52,11 @@ export default function Countdown() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-display text-4xl md:text-5xl text-blue-900 font-bold mb-4">
-            Der große Tag kommt näher
+          <h2 className={`font-display ${countdown.fontSize?.title || 'text-4xl'} md:text-5xl text-blue-900 font-bold mb-4`}>
+            {countdown.title}
           </h2>
-          <p className="font-display text-lg text-blue-700 mb-12">
-            Wir können es kaum erwarten, mit euch zu feiern!
+          <p className={`font-display ${countdown.fontSize?.subtitle || 'text-lg'} text-blue-700 mb-12`}>
+            {countdown.subtitle}
           </p>
         </motion.div>
 

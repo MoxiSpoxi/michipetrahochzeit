@@ -1,8 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useConfig } from '../context/WeddingConfigContext'
 
 export default function Footer() {
+  const { config } = useConfig()
+  const { footer } = config
+
   return (
     <footer className="py-12 px-4 bg-gradient-to-b from-white to-blue-100">
       <div className="max-w-4xl mx-auto text-center">
@@ -12,8 +16,8 @@ export default function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h3 className="font-hand text-4xl md:text-5xl text-blue-900 font-bold mb-6">
-            Petra & Michi
+          <h3 className={`font-hand ${footer.fontSize?.names || 'text-4xl'} md:text-5xl text-blue-900 font-bold mb-6`}>
+            {footer.names}
           </h3>
         
           <div className="flex justify-center gap-2 mb-6">
@@ -22,12 +26,12 @@ export default function Footer() {
             <span className="text-blue-300 text-2xl">♥</span>
           </div>
         
-          <p className="font-display text-lg text-blue-900 mb-4 font-bold">
-            Wir freuen uns auf diesen besonderen Tag mit euch!
+          <p className={`font-display ${footer.fontSize?.mainText || 'text-lg'} text-blue-900 mb-4 font-bold`}>
+            {footer.mainText}
           </p>
         
-          <p className="font-display text-sm text-blue-700 mb-8">
-            ...und auf's Feiern
+          <p className={`font-display ${footer.fontSize?.subText || 'text-sm'} text-blue-700 mb-8`}>
+            {footer.subText}
           </p>
         </motion.div>
 
@@ -38,8 +42,8 @@ export default function Footer() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="border-t border-blue-300 pt-8"
         >
-          <p className="font-sans text-xs text-blue-300">
-            © 2026 Petra & Michi. Alle Rechte vorbehalten.
+          <p className={`font-sans ${footer.fontSize?.copyright || 'text-xs'} text-blue-300`}>
+            {footer.copyright}
           </p>
         </motion.div>
       </div>

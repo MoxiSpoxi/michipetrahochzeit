@@ -119,6 +119,11 @@ export default function Home() {
       </main>
 
       <Footer />
+      
+      {/* Admin Link - Hidden */}
+      <a href="/admin" className="fixed bottom-4 right-4 text-xs text-gray-300 opacity-50 hover:opacity-100 transition-opacity">
+        Admin
+      </a>
     </div>
   )
 }

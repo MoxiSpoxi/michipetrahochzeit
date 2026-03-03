@@ -2,24 +2,13 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useConfig } from '../context/WeddingConfigContext'
 
 export default function Gallery() {
+  const { config } = useConfig()
+  const { gallery } = config
+  
   const [selectedImage, setSelectedImage] = useState(null)
-
-  // Unsere Hochzeitsbilder
-  const images = [
-    { id: 1, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.38.jpeg', alt: 'Bild 1' },
-    { id: 2, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.39.jpeg', alt: 'Bild 2' },
-    { id: 3, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.40.jpeg', alt: 'Bild 3' },
-    { id: 4, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.41.jpeg', alt: 'Bild 4' },
-    { id: 5, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.42.jpeg', alt: 'Bild 5' },
-    { id: 6, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.43.jpeg', alt: 'Bild 6' },
-    { id: 7, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.44.jpeg', alt: 'Bild 7' },
-    { id: 8, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.45.jpeg', alt: 'Bild 8' },
-    { id: 9, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.46.jpeg', alt: 'Bild 9' },
-    { id: 10, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.47.jpeg', alt: 'Bild 10' },
-    { id: 11, src: '/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.48.jpeg', alt: 'Bild 11' },
-  ]
 
   return (
     <div className="min-h-screen py-20 px-4 bg-gradient-to-b from-white to-blue-100">
@@ -31,16 +20,16 @@ export default function Gallery() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl text-blue-900 font-bold mb-4">
-            Unsere Galerie
+          <h2 className={`font-display ${gallery.fontSize?.title || 'text-4xl'} md:text-5xl text-blue-900 font-bold mb-4`}>
+            {gallery.title}
           </h2>
-          <p className="font-display text-lg text-blue-700">
-            Momente, die wir für immer in unseren Herzen tragen
+          <p className={`font-display ${gallery.fontSize?.subtitle || 'text-lg'} text-blue-700`}>
+            {gallery.subtitle}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image, index) => (
+          {gallery.images.map((image, index) => (
             <motion.div
               key={image.id}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -67,8 +56,8 @@ export default function Gallery() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-center mt-12"
         >
-          <p className="font-hand text-2xl text-blue-300">
-            ♥ Mehr Bilder folgen nach dem großen Tag ♥
+          <p className={`font-hand ${gallery.fontSize?.footerText || 'text-2xl'} text-blue-300`}>
+            {gallery.footerText}
           </p>
         </motion.div>
       </div>

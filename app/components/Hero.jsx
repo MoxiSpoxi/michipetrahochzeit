@@ -1,13 +1,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useConfig } from '../context/WeddingConfigContext'
 
 export default function Hero() {
+  const { config } = useConfig()
+  const { hero } = config
+
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Blasses Hintergrundbild */}
       <img 
-        src="/imagespetramichi/WhatsApp Image 2026-02-20 at 13.11.39.jpeg"
+        src={hero.backgroundImage}
         alt="Petra und Michi Header"
         className="absolute inset-0 w-full h-full object-cover object-left opacity-50 z-0 pointer-events-none select-none"
         style={{ filter: 'blur(1px)' }}
@@ -29,8 +33,8 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="-mt-20 md:-mt-32"
         >
-          <p className="font-display text-3xl md:text-5xl lg:text-6xl text-blue-900 tracking-widest uppercase mb-4 font-bold">
-            Wir trauen uns!
+          <p className={`font-display ${hero.fontSize?.title || 'text-3xl'} md:text-5xl lg:text-6xl text-blue-900 tracking-widest uppercase mb-4 font-bold`}>
+            {hero.title}
           </p>
         </motion.div>
 
@@ -40,16 +44,16 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.3 }}
           className="mb-6"
         >
-          <h1 className="font-hand text-6xl md:text-8xl lg:text-9xl text-blue-900 leading-none font-bold">
-            Petra
+          <h1 className={`font-hand ${hero.fontSize?.names || 'text-6xl'} md:text-8xl lg:text-9xl text-blue-900 leading-none font-bold`}>
+            {hero.name1}
           </h1>
           <div className="flex items-center justify-center gap-4 my-2">
             <div className="h-px w-16 md:w-24 bg-blue-900"></div>
             <span className="text-blue-900 text-3xl">♥</span>
             <div className="h-px w-16 md:w-24 bg-blue-900"></div>
           </div>
-          <h1 className="font-hand text-6xl md:text-8xl lg:text-9xl text-blue-900 leading-none font-bold">
-            Michi
+          <h1 className={`font-hand ${hero.fontSize?.names || 'text-6xl'} md:text-8xl lg:text-9xl text-blue-900 leading-none font-bold`}>
+            {hero.name2}
           </h1>
         </motion.div>
 
@@ -58,8 +62,8 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <p className="font-display text-2xl md:text-3xl text-blue-900 italic mb-2 font-bold">
-            22. August 2026
+          <p className={`font-display ${hero.fontSize?.date || 'text-2xl'} md:text-3xl text-blue-900 italic mb-2 font-bold`}>
+            {hero.date}
           </p>
          
         </motion.div>
