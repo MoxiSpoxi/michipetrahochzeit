@@ -485,6 +485,41 @@ function DetailsEditor({ data, onSave }) {
     setFormData({ ...formData, events: newEvents })
   }
 
+  const addEvent = () => {
+    const newEvent = {
+      icon: "🎉",
+      title: "Neues Event",
+      time: "00:00 Uhr",
+      location: "Ort",
+      address: "Adresse",
+      description: "Beschreibung"
+    }
+    setFormData({ ...formData, events: [...formData.events, newEvent] })
+  }
+
+  const removeEvent = (index) => {
+    const newEvents = formData.events.filter((_, i) => i !== index)
+    setFormData({ ...formData, events: newEvents })
+  }
+
+  const moveEventUp = (index) => {
+    if (index === 0) return
+    const newEvents = [...formData.events]
+    const temp = newEvents[index]
+    newEvents[index] = newEvents[index - 1]
+    newEvents[index - 1] = temp
+    setFormData({ ...formData, events: newEvents })
+  }
+
+  const moveEventDown = (index) => {
+    if (index === formData.events.length - 1) return
+    const newEvents = [...formData.events]
+    const temp = newEvents[index]
+    newEvents[index] = newEvents[index + 1]
+    newEvents[index + 1] = temp
+    setFormData({ ...formData, events: newEvents })
+  }
+
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Details Section Editor</h2>
@@ -531,11 +566,61 @@ function DetailsEditor({ data, onSave }) {
       </div>
 
       <div className="border-t pt-6">
-        <h3 className="text-lg font-bold text-gray-800 mb-4">Events</h3>
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-bold text-gray-800">Events (Kacheln)</h3>
+          <button
+            type="button"
+            onClick={addEvent}
+            className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors flex items-center gap-2"
+          >
+            <span>+</span> Kachel hinzufügen
+          </button>
+        </div>
         {formData.events.map((event, index) => (
           <div key={index} className="bg-gray-50 rounded-lg p-4 mb-4">
             <div className="flex justify-between items-center mb-4">
-              <span className="font-medium text-gray-700">Event {index + 1}</span>
+              <span className="font-medium text-gray-700 flex items-center gap-2">
+                <span className="bg-blue-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm">
+                  {index + 1}
+                </span>
+                Kachel {index + 1}
+              </span>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => moveEventUp(index)}
+                  disabled={index === 0}
+                  className={`px-3 py-1 rounded text-sm ${
+                    index === 0 
+                      ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
+                      : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                  }`}
+                  title="Nach oben"
+                >
+                  ▲
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveEventDown(index)}
+                  disabled={index === formData.events.length - 1}
+                  className={`px-3 py-1 rounded text-sm ${
+                    index === formData.events.length - 1 
+                      ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
+                      : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                  }`}
+                  title="Nach unten"
+                >
+                  ▼
+                </button>
+                <button
+                  type="button"
+                  onClick={() => removeEvent(index)}
+                  className="px-3 py-1 bg-red-100 text-red-700 rounded text-sm hover:bg-red-200"
+                  title="Kachel entfernen"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div>
