@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import Hero from './components/Hero'
 import Countdown from './components/Countdown'
@@ -56,6 +57,11 @@ export default function Home() {
                   {item.label}
                 </button>
               ))}
+              <Link href="/unsere-geschichte">
+                <button className="text-blue-900 hover:text-blue-700 transition-colors duration-300 font-display text-lg font-bold">
+                  Unsere Geschichte
+                </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -92,6 +98,11 @@ export default function Home() {
                       {item.label}
                     </button>
                   ))}
+                  <Link href="/unsere-geschichte">
+                    <button onClick={() => setIsMenuOpen(false)} className="text-blue-900 hover:text-blue-700 transition-colors duration-300 font-display text-lg text-left font-bold">
+                      Unsere Geschichte
+                    </button>
+                  </Link>
                 </div>
               </motion.div>
             )}

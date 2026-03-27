@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useConfig } from '../context/WeddingConfigContext'
 
@@ -72,8 +73,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex justify-center"
+          className="flex flex-col items-center gap-6"
         >
+          <Link href="/unsere-geschichte">
+            <button className="bg-blue-900 hover:bg-blue-800 text-white font-display font-bold py-3 px-8 rounded-lg transition-colors duration-300">
+              Unsere Geschichte
+            </button>
+          </Link>
           <div className="animate-bounce">
             <svg className="w-8 h-8 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
