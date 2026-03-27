@@ -109,6 +109,7 @@ export const defaultConfig = ${JSON.stringify(config, null, 2)}
     { id: 'countdown', label: 'Countdown' },
     { id: 'details', label: 'Details' },
     { id: 'gallery', label: 'Gallery' },
+    { id: 'story', label: 'Unsere Geschichte' },
     { id: 'footer', label: 'Footer' },
   ]
 
@@ -223,6 +224,9 @@ export const defaultConfig = ${JSON.stringify(config, null, 2)}
           )}
           {activeTab === 'gallery' && (
             <GalleryEditor data={config.gallery} onSave={(data) => handleSave('gallery', data)} />
+          )}
+          {activeTab === 'story' && (
+            <StoryEditor data={config.story} onSave={(data) => handleSave('story', data)} />
           )}
           {activeTab === 'footer' && (
             <FooterEditor data={config.footer} onSave={(data) => handleSave('footer', data)} />
@@ -1042,6 +1046,171 @@ function FooterEditor({ data, onSave }) {
             <p className={`${formData.fontSize?.copyright || 'text-xs'} text-blue-300`}>
               {formData.copyright}
             </p>
+          </div>
+        )}
+      </div>
+
+      <button
+        onClick={() => onSave(formData)}
+        className="px-6 py-3 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition-colors"
+      >
+        Speichern
+      </button>
+    </div>
+  )
+}
+
+function StoryEditor({ data, onSave }) {
+  const [formData, setFormData] = useState(data)
+  const [showPreview, setShowPreview] = useState(false)
+
+  const handleChange = (field, value) => {
+    setFormData({ ...formData, [field]: value })
+  }
+
+  const handleFontSizeChange = (field, value) => {
+    setFormData({
+      ...formData,
+      fontSize: { ...formData.fontSize, [field]: value }
+    })
+  }
+
+  return (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Unsere Geschichte Editor</h2>
+      
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Titel</label>
+        <input
+          type="text"
+          value={formData.title}
+          onChange={(e) => handleChange('title', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Untertitel</label>
+        <input
+          type="text"
+          value={formData.subtitle}
+          onChange={(e) => handleChange('subtitle', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Einleitungstext</label>
+        <textarea
+          value={formData.introText}
+          onChange={(e) => handleChange('introText', e.target.value)}
+          rows={4}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Haupttext</label>
+        <textarea
+          value={formData.mainText}
+          onChange={(e) => handleChange('mainText', e.target.value)}
+          rows={6}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Zitat</label>
+        <textarea
+          value={formData.quote}
+          onChange={(e) => handleChange('quote', e.target.value)}
+          rows={2}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Zurück-Button Text</label>
+        <input
+          type="text"
+          value={formData.backButtonText}
+          onChange={(e) => handleChange('backButtonText', e.target.value)}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+
+      {/* Font Size Settings */}
+      <div className="border-t pt-6">
+        <h3 className="text-lg font-bold text-gray-800 mb-4">Schriftgrößen</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <FontSizeEditor 
+            label="Titel" 
+            value={formData.fontSize?.title} 
+            onChange={(v) => handleFontSizeChange('title', v)} 
+          />
+          <FontSizeEditor 
+            label="Untertitel" 
+            value={formData.fontSize?.subtitle} 
+            onChange={(v) => handleFontSizeChange('subtitle', v)} 
+          />
+          <FontSizeEditor 
+            label="Einleitung" 
+            value={formData.fontSize?.introText} 
+            onChange={(v) => handleFontSizeChange('introText', v)} 
+          />
+          <FontSizeEditor 
+            label="Haupttext" 
+            value={formData.fontSize?.mainText} 
+            onChange={(v) => handleFontSizeChange('mainText', v)} 
+          />
+          <FontSizeEditor 
+            label="Zitat" 
+            value={formData.fontSize?.quote} 
+            onChange={(v) => handleFontSizeChange('quote', v)} 
+          />
+          <FontSizeEditor 
+            label="Button" 
+            value={formData.fontSize?.backButton} 
+            onChange={(v) => handleFontSizeChange('backButton', v)} 
+          />
+        </div>
+      </div>
+
+      {/* Preview */}
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <button
+          onClick={() => setShowPreview(!showPreview)}
+          className="text-sm text-blue-600 hover:text-blue-800 underline"
+        >
+          {showPreview ? 'Vorschau ausblenden' : 'Vorschau anzeigen'}
+        </button>
+        {showPreview && (
+          <div className="mt-4 p-4 bg-white rounded-lg border border-blue-200">
+            <h1 className={`${formData.fontSize?.title || 'text-5xl'} font-hand text-blue-900 mb-4`}>
+              {formData.title}
+            </h1>
+            <p className={`${formData.fontSize?.subtitle || 'text-lg'} text-gray-600 mb-8`}>
+              {formData.subtitle}
+            </p>
+            <div className="bg-blue-50 rounded-lg p-8 mb-8">
+              <h2 className="font-hand text-3xl text-blue-900 mb-4">Wie alles begann</h2>
+              <p className={`${formData.fontSize?.introText || 'text-lg'} text-gray-700 mb-4`}>
+                {formData.introText}
+              </p>
+              <p className={`${formData.fontSize?.mainText || 'text-base'} text-gray-700`}>
+                {formData.mainText}
+              </p>
+            </div>
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8 text-center">
+              <p className={`${formData.fontSize?.quote || 'text-lg'} text-gray-600 italic`}>
+                "{formData.quote}"
+              </p>
+            </div>
+            <div className="text-center mt-16">
+              <button className="bg-blue-900 text-white font-display font-bold py-3 px-8 rounded-lg">
+                {formData.backButtonText}
+              </button>
+            </div>
           </div>
         )}
       </div>

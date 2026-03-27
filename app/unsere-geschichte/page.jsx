@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useConfig } from '../context/WeddingConfigContext'
 
 export default function UnserGeschichte() {
+  const { config } = useConfig()
+  const { story } = config
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -59,11 +62,11 @@ export default function UnserGeschichte() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="font-hand text-5xl md:text-6xl text-blue-900 mb-4">
-              Unsere Story
+            <h1 className={`font-hand ${story.fontSize?.title || 'text-5xl'} md:text-6xl text-blue-900 mb-4`}>
+              {story.title}
             </h1>
-            <p className="text-gray-600 text-lg font-display max-w-2xl mx-auto">
-                
+            <p className={`text-gray-600 ${story.fontSize?.subtitle || 'text-lg'} font-display max-w-2xl mx-auto`}>
+              {story.subtitle}
             </p>
           </motion.div>
 
@@ -77,19 +80,17 @@ export default function UnserGeschichte() {
               <h2 className="font-hand text-3xl text-blue-900 mb-4">
                 Wie alles begann
               </h2>
-              <p className="text-gray-700 mb-4">
-                Hier kommt eure Geschichte hin. Erzählt uns, wie ihr euch kennengelernt habt, 
-                was euch verbindet und wie die Liebe euer Leben verändert hat.
+              <p className={`${story.fontSize?.introText || 'text-lg'} text-gray-700 mb-4`}>
+                {story.introText}
               </p>
-              <p className="text-gray-700">
-                Diese Seite kann mit persönlichen Erinnerungen, Fotos und Meilensteinen eurer 
-                gemeinsamen Reise gefüllt werden.
+              <p className={`${story.fontSize?.mainText || 'text-base'} text-gray-700`}>
+                {story.mainText}
               </p>
             </div>
 
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8 text-center">
-              <p className="text-gray-600 italic text-lg">
-                "Schreiben Sie Ihre Geschichte - eine Geschichte of Liebe, Lachen und Abenteuer"
+              <p className={`${story.fontSize?.quote || 'text-lg'} text-gray-600 italic`}>
+                "{story.quote}"
               </p>
             </div>
           </motion.div>
@@ -98,7 +99,7 @@ export default function UnserGeschichte() {
           <div className="text-center mt-16 pb-8">
             <Link href="/">
               <button className="bg-blue-900 hover:bg-blue-800 text-white font-display font-bold py-3 px-8 rounded-lg transition-colors duration-300">
-                Zurück zur Startseite
+                {story.backButtonText}
               </button>
             </Link>
           </div>

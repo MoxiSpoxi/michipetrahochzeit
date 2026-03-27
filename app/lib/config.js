@@ -96,6 +96,22 @@ export const defaultConfig = {
       subText: "text-sm",
       copyright: "text-xs"
     }
+  },
+  story: {
+    title: "Unsere Geschichte",
+    subtitle: "Die wunderbare Reise von Petra und Michi",
+    introText: "Hier kommt eure Geschichte hin. Erzählt uns, wie ihr euch kennengelernt habt, was euch verbindet und wie die Liebe euer Leben verändert hat.",
+    mainText: "Diese Seite kann mit persönlichen Erinnerungen, Fotos und Meilensteinen eurer gemeinsamen Reise gefüllt werden.",
+    quote: "Schreiben Sie Ihre Geschichte - eine Geschichte of Liebe, Lachen und Abenteuer",
+    backButtonText: "Zurück zur Startseite",
+    fontSize: {
+      title: "text-5xl",
+      subtitle: "text-lg",
+      introText: "text-lg",
+      mainText: "text-base",
+      quote: "text-lg",
+      backButton: "text-lg"
+    }
   }
 }
 
