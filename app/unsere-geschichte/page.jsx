@@ -6,7 +6,22 @@ import { useConfig } from '../context/WeddingConfigContext'
 
 export default function UnserGeschichte() {
   const { config } = useConfig()
-  const { story } = config
+  const story = config.story || {
+    title: 'Unsere Story',
+    subtitle: 'oder besser gesagt: Sie kam - er sah - sie siegte!',
+    introText: 'Hier kommt eure Geschichte hin. Erzählt uns, wie ihr euch kennengelernt habt, was euch verbindet und wie die Liebe euer Leben verändert hat.',
+    mainText: 'Diese Seite kann mit persönlichen Erinnerungen, Fotos und Meilensteinen eurer gemeinsamen Reise gefüllt werden.',
+    quote: 'Schreiben Sie Ihre Geschichte - eine Geschichte of Liebe, Lachen und Abenteuer',
+    backButtonText: 'Zurück zur Startseite',
+    fontSize: {
+      title: 'text-5xl',
+      subtitle: 'text-lg',
+      introText: 'text-lg',
+      mainText: 'text-base',
+      quote: 'text-lg',
+      backButton: 'text-lg'
+    }
+  }
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -76,16 +91,21 @@ export default function UnserGeschichte() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="prose prose-lg max-w-4xl mx-auto text-gray-700"
           >
-            <div className="bg-blue-50 rounded-lg p-8 mb-8">
+            <div className="bg-blue-50 rounded-lg p-8 mb-8 space-y-6">
               <h2 className="font-hand text-3xl text-blue-900 mb-4">
                 Wie alles begann
               </h2>
-              <p className={`${story.fontSize?.introText || 'text-lg'} text-gray-700 mb-4`}>
-                {story.introText}
-              </p>
-              <p className={`${story.fontSize?.mainText || 'text-base'} text-gray-700`}>
-                {story.mainText}
-              </p>
+              {story.introText.split('\n\n').map((paragraph, idx) => (
+                <p key={`intro-${idx}`} className={`${story.fontSize?.introText || 'text-lg'} text-gray-700 leading-relaxed`}> 
+                  {paragraph.trim()}
+                </p>
+              ))}
+
+              {story.mainText.split('\n\n').map((paragraph, idx) => (
+                <p key={`main-${idx}`} className={`${story.fontSize?.mainText || 'text-base'} text-gray-700 leading-relaxed`}> 
+                  {paragraph.trim()}
+                </p>
+              ))}
             </div>
 
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8 text-center">

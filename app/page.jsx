@@ -62,9 +62,12 @@ export default function Home() {
                   Unsere Geschichte
                 </button>
               </Link>
+              <Link href="/rsvp">
+                <button className="text-blue-900 hover:text-blue-700 transition-colors duration-300 font-display text-lg font-bold">
+                  RSVP
+                </button>
+              </Link>
             </div>
-
-            {/* Mobile Menu Button */}
             <button 
               className="md:hidden text-blue-900"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -101,6 +104,11 @@ export default function Home() {
                   <Link href="/unsere-geschichte">
                     <button onClick={() => setIsMenuOpen(false)} className="text-blue-900 hover:text-blue-700 transition-colors duration-300 font-display text-lg text-left font-bold">
                       Unsere Geschichte
+                    </button>
+                  </Link>
+                  <Link href="/rsvp">
+                    <button onClick={() => setIsMenuOpen(false)} className="text-blue-900 hover:text-blue-700 transition-colors duration-300 font-display text-lg text-left font-bold">
+                      RSVP
                     </button>
                   </Link>
                 </div>
