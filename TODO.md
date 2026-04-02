@@ -1,17 +1,9 @@
-# Todo-Liste für Kachel-Verwaltung im Admin Panel
+# Fix Vercel Build Error - TODO
 
-## Aufgabe
-Im Admin Panel sollen Kacheln (Events) hinzugefügt, entfernt und neu angeordnet werden können.
-
-## Schritte
-
-- [x] 1. Admin Panel (app/admin/page.jsx) - DetailsEditor erweitern:
-  - [x] 1.1 Add Event Button hinzufügen
-  - [x] 1.2 Remove Button für jede Kachel hinzufügen
-  - [x] 1.3 Move Up / Move Down Buttons für Sortierung hinzufügen
-  - [x] 1.4 State-Funktionen für add/remove/reorder implementieren
-- [ ] 2. Änderungen testen
-
-## Abhängigkeiten
-- app/admin/page.jsx (DetailsEditor Komponente)
+- [x] Step 1: Remove Vite artifacts (vite.config.js, src/ dir)
+- [x] Step 2: Edit package.json (update build script to npx, bump Next.js version, add postinstall)
+- [x] Step 3: Tweak vercel.json
+- [x] Step 4: Run npm install
+- [x] Step 5: Test npm run build locally
+- [x] Step 6: Commit/push for Vercel redeploy
 
