@@ -1,9 +1,7 @@
-# Fix Vercel Build Error - TODO
+# Wedding Config Integration TODO
 
-- [x] Step 1: Remove Vite artifacts (vite.config.js, src/ dir)
-- [x] Step 2: Edit package.json (update build script to npx, bump Next.js version, add postinstall)
-- [x] Step 3: Tweak vercel.json
-- [x] Step 4: Run npm install
-- [x] Step 5: Test npm run build locally
-- [x] Step 6: Commit/push for Vercel redeploy
-
+- [x] Update app/lib/config.js with full user JSON data
+- [x] Refactor app/components/Details.jsx to use config dynamically
+- [x] Verify other components (Hero, Countdown, Gallery, Footer, Story) - auto-updated via config
+- [ ] Test locally with npm run dev
+- [ ] Complete

@@ -1,38 +1,20 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useWeddingConfig } from '../hooks/useWeddingConfig'
 
 export default function Details() {
-  const detailsData = {
-    introTitle: "Wir trauen uns - jetzt passiert's,\nam 22. August 2026 eskaliert's (sowieso)\nWir laden euch ganz herzlich ein,\nVollgas dabei zu sein! 🎉🥳🥂",
-    introText: "",
-    events: [
-      {
-        icon: "📍",
-        title: "ES GEHT LOS!",
-        time: "11:00 Uhr",
-        location: "Pfarrkirche Mariä Himmelfahrt Terlan",
-        address: "",
-        description: "Liebe Gäste, bitte findet euch um 10:30 Uhr beim Dorfplatz vor der Pfarrkirche Mariä Himmelfahrt in Terlan ein. Ankunft der Braut geplant für...ja, wenn Petra dann halt soweit ist. 😉 Oje, ihr Weg führt direkt am Wieterer vorbei, d.h. es kann - sagen wir mal - sich etwas verzögern..., aber für einen letzten Monte al volo als unverheiratete Frau muss auf jeden Fall Zeit sein ;)"
-      },
-      {
-        icon: "🍽️",
-        title: "Essen & Trinken",
-        time: "ab 18:00 Uhr",
-        location: "Schloss Rosenblüte",
-        address: "Schlossweg 45, 12345 Musterstadt",
-        description: "Es wird ein köstliches Buffet geben, das keine Wünsche offen lässt."
-      },
-      {
-        icon: "⛪",
-        title: "Kirchliche Trauung",
-        time: "11:30 Uhr",
-        location: "Pfarrkirche Mariä Himmelfahrt Terlan",
-        address: "",
-        description: "Michi hat sich nach dem 'First Look' wieder ein wenig gesammelt und zieht nun gemeinsam mit den Gästen feierlich in die Kirche ein – ein aufregender Moment zwischen Vorfreude und Herzklopfen. Petra wird – ganz nach ihrem Herzenswunsch – von ihrem Tata in die Kirche geführt. Ein berührender Augenblick voller Stolz & Verbundenheit, der mehr als 1000 Worte. Blumenkinder bereiten den Weg mit zarten Blüten für das, was nun beginnt: ein gemeinsames Kapitel voller Glück! Liebe Gäste, um diese unvergesslichen Augenblicke ganz bewusst und ungestört genießen zu können, wird ein Fotograf alle Emotionen für uns und euch festhalten. Eure Handys und Kameras dürfen getrost in der Tasche bleiben, sodass eure Hände frei sind – sei es für ein Taschentuch 😉 oder um nach dem First Kiss zu applaudieren."
-      }
-    ],
-    footerText: "💍 Wir freuen uns auf euch! 💍"
+  const { config, isLoaded } = useWeddingConfig()
+  
+  if (!isLoaded) {
+    return <div className="min-h-screen flex items-center justify-center">Laden...</div>
+  }
+  
+  const detailsData = config.details || {
+    introTitle: '',
+    introText: '',
+    events: [],
+    footerText: ''
   }
 
   return (
@@ -45,9 +27,14 @@ export default function Details() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="font-display text-2xl md:text-3xl text-blue-900 font-bold whitespace-pre-line">
+          <p className={`font-display ${detailsData.fontSize?.introTitle || 'text-2xl'} md:text-3xl text-blue-900 font-bold whitespace-pre-line`}>
             {detailsData.introTitle}
           </p>
+          {detailsData.introText && (
+            <p className={`font-display ${detailsData.fontSize?.introText || 'text-lg'} text-blue-900 mt-4 whitespace-pre-line`}>
+              {detailsData.introText}
+            </p>
+          )}
         </motion.div>
 
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
@@ -61,10 +48,10 @@ export default function Details() {
               className="bg-blue-100/80 rounded-2xl p-8 shadow-xl border border-blue-300 hover:border-blue-900 transition-colors duration-300 backdrop-blur-sm"
             >
               <div className="text-4xl mb-4 text-blue-900 drop-shadow-lg">{detail.icon}</div>
-              <h3 className="font-display text-2xl text-blue-900 font-bold mb-2">
+              <h3 className={`font-display ${detailsData.fontSize?.eventTitle || 'text-2xl'} text-blue-900 font-bold mb-2`}>
                 {detail.title}
               </h3>
-              <p className="font-display text-lg text-blue-700 mb-3 font-semibold">
+              <p className={`font-display ${detailsData.fontSize?.eventTime || 'text-lg'} text-blue-700 mb-3 font-semibold`}>
                 {detail.time}
               </p>
               {detail.location && (
@@ -77,7 +64,7 @@ export default function Details() {
                   {detail.address}
                 </p>
               )}
-              <p className="font-display text-base text-blue-900 leading-relaxed">
+              <p className={`font-display ${detailsData.fontSize?.eventDescription || 'text-base'} text-blue-900 leading-relaxed`}>
                 {detail.description}
               </p>
             </motion.div>
@@ -92,7 +79,7 @@ export default function Details() {
           className="text-center mt-16"
         >
           <div className="inline-block bg-blue-50 rounded-full px-8 py-4 border-2 border-blue-900">
-            <p className="font-display text-2xl text-blue-900 font-bold">
+            <p className={`font-display ${detailsData.fontSize?.footerText || 'text-2xl'} text-blue-900 font-bold`}>
               {detailsData.footerText}
             </p>
           </div>
@@ -101,3 +88,4 @@ export default function Details() {
     </div>
   )
 }
+
