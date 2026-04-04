@@ -1,20 +1,13 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from "framer-motion"
 import { useConfig } from "../context/WeddingConfigContext"
 import Link from "next/link"
+import { useForm, ValidationError } from '@formspree/react'
 
 export default function RsvpPage() {
   const config = useConfig()
-  const [status, setStatus] = useState('')
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setStatus('Vielen Dank! Eure Zusage wurde gesendet. 💕')
-    e.target.reset()
-    setTimeout(() => setStatus(''), 5000)
-  }
+  const [state, handleSubmit] = useForm('mdapwrzg')
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
@@ -41,16 +34,26 @@ export default function RsvpPage() {
             </p>
           </motion.section>
 
-
-
+          {state.succeeded ? (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-white rounded-3xl shadow-2xl p-12 border-4 border-green-100 text-center space-y-6"
+            >
+              <div className="text-6xl mb-4">💕</div>
+              <h2 className="text-3xl font-bold text-green-800">Vielen Dank!</h2>
+              <p className="text-xl text-green-700">Eure Zusage wurde erfolgreich gesendet. Wir freuen uns riesig auf euch!</p>
+              <Link href="/" className="inline-block mt-4 text-blue-900 font-bold hover:underline font-hand text-xl">
+                ← Zurück zur Startseite
+              </Link>
+            </motion.div>
+          ) : (
           <motion.form 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
             onSubmit={handleSubmit}
             className="bg-white rounded-3xl shadow-2xl p-12 border-4 border-blue-100 space-y-6"
-            action="https://formspree.io/f/mdapwrzg"
-            method="POST"
           >
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-2">Ihr Name(n)*</label>
@@ -64,16 +67,19 @@ export default function RsvpPage() {
                 <option value="ja">Ja, wir kommen! 🎉</option>
                 <option value="nein">Leider nein 😔</option>
               </select>
+              <ValidationError prefix="Antwort" field="attending" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Anzahl Gäste*</label>
                 <input type="number" name="guests" min="1" max="10" required className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" placeholder="2" />
+                <ValidationError prefix="Gäste" field="guests" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Email (optional)</label>
                 <input type="email" name="_replyto" className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" />
+                <ValidationError prefix="Email" field="_replyto" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
             </div>
 
@@ -81,30 +87,25 @@ export default function RsvpPage() {
               <label className="block text-sm font-bold text-gray-700 mb-2">Nachricht (optional)</label>
               <textarea name="message" rows="4" className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" placeholder="Etwas Persönliches oder Anmerkungen (z.B. Allergien)..."></textarea>
             </div>
+            <ValidationError prefix="Nachricht" field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
 
-            <input type="hidden" name="_subject" value="Neue RSVP Zusage!" />
-            <input type="hidden" name="_next" value="https://your-site.com/rsvp?success" />
+            <input type="hidden" name="_subject" value="Neue Zusage!" />
 
             <motion.button 
               type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-gradient-to-r from-blue-900 to-blue-800 text-white font-display font-bold py-6 px-8 rounded-2xl text-xl shadow-2xl hover:from-blue-800 hover:to-blue-700 transition-all duration-300"
+              disabled={state.submitting}
+              className={`w-full bg-gradient-to-r from-blue-900 to-blue-800 text-white font-display font-bold py-6 px-8 rounded-2xl text-xl shadow-2xl transition-all duration-300 ${state.submitting ? 'opacity-50 cursor-not-allowed' : 'hover:from-blue-800 hover:to-blue-700'}`}
             >
-              Zusage senden 💌
+              {state.submitting ? 'Wird gesendet...' : 'Zusage senden 💌'}
             </motion.button>
 
-            {status && (
-              <motion.p 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center text-green-600 font-bold text-xl py-4 bg-green-50 rounded-xl border-2 border-green-200"
-              >
-                {status}
-              </motion.p>
-            )}
+            <ValidationError errors={state.errors} className="text-red-500 text-center font-bold" />
           </motion.form>
+          )}
 
+          {!state.succeeded && (
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -113,6 +114,7 @@ export default function RsvpPage() {
           >
             Danke für eure Zusage! Das macht uns unendlich glücklich. 💕
           </motion.p>
+          )}
         </div>
       </main>
     </div>

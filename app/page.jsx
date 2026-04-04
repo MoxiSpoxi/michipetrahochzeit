@@ -64,7 +64,7 @@ export default function Home() {
               </Link>
               <Link href="/rsvp">
                 <button className="text-blue-900 hover:text-blue-700 transition-colors duration-300 font-display text-lg font-bold">
-                  RSVP
+                  Zusagen
                 </button>
               </Link>
 
@@ -109,7 +109,7 @@ export default function Home() {
                   </Link>
                   <Link href="/rsvp">
                     <button onClick={() => setIsMenuOpen(false)} className="text-blue-900 hover:text-blue-700 transition-colors duration-300 font-display text-lg text-left font-bold">
-                      RSVP
+                      Zusagen
                     </button>
                   </Link>
 
