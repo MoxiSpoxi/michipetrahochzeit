@@ -1,24 +1,12 @@
 {
-  "name": "michi-petra-hochzeit",
+  "name": "michipetrahochzeit",
   "version": "1.0.0",
-  "private": true,
+  "description": "",
+  "main": "next.config.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "npx next build",
-    "start": "next start",
-    "lint": "next lint",
-    "postinstall": "chmod 755 node_modules/.bin/next* 2>/dev/null || true"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@formspree/react": "^3.0.0",
-    "framer-motion": "^11.0.0",
-    "next": "^16.2.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.4.19"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.24",
-    "postcss": "^8.5.6"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
