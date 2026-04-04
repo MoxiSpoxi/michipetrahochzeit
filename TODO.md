@@ -1,1 +1,7 @@
-# Formspree RSVP Integration&#10;&#10;## Steps:&#10;- [ ] 1. Install @formspree/react: `npm install @formspree/ajax`&#10;- [ ] 2. Update app/rsvp/page.jsx with useForm hook, validation, states&#10;- [ ] 3. Test locally: `npm run dev`, submit form, verify success/error/loading&#10;- [ ] 4. Deploy to Vercel: `vercel deploy`&#10;- [ ] 5. Verify live form and Formspree submissions&#10;&#10;Progress: Starting...
+# TODO: Fix npm EINTEGRITY error for Vercel
+
+- [ ] Step 1: Delete corrupted package-lock.json
+- [ ] Step 2: Run `npm install` to regenerate clean package-lock.json
+- [ ] Step 3: Verify `npm run build` succeeds
+- [ ] Step 4: Commit and push new package-lock.json for Vercel deploy
+
