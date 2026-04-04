@@ -8,7 +8,7 @@ import { useForm, ValidationError } from '@formspree/react'
 
 export default function RsvpPage() {
   const config = useConfig()
-  const [state, handleSubmit] = useForm('DEINE_NEUE_ID')
+  const [state, handleSubmit] = useForm('mdapwrzg')
   const [formData, setFormData] = useState({ name: '', attending: '' })
 
   return (
@@ -106,6 +106,11 @@ export default function RsvpPage() {
                 <input type="email" name="_replyto" className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" />
                 <ValidationError prefix="Email" field="_replyto" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-2">Musikwünsche 🎵</label>
+              <input type="text" name="song_request" className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" placeholder="Welches Lied darf auf der Tanzfläche nicht fehlen?" />
             </div>
 
             <div>
