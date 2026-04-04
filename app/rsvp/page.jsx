@@ -94,6 +94,9 @@ export default function RsvpPage() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
+                <p className="text-red-600 text-sm font-bold mb-2 leading-tight">
+                  Bei Paaren oder Gruppen bitte nur eine Antwort einreichen und die Personenanzahl für alle angeben.
+                </p>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Anzahl Gäste*</label>
                 <input type="number" name="guests" min="1" max="10" required className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" placeholder="0" />
                 <ValidationError prefix="Gäste" field="guests" errors={state.errors} className="text-red-500 text-sm mt-1" />
