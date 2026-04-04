@@ -41,7 +41,7 @@ export default function Gallery() {
               onClick={() => setSelectedImage(image)}
             >
               <img 
-                src={image.src} 
+                src={encodeURI(image.src)} 
                 alt={image.alt}
                 className="w-full h-full object-cover"
               />
@@ -80,17 +80,17 @@ export default function Gallery() {
               onClick={(e) => e.stopPropagation()}
             >
               <img 
-                src={selectedImage.src} 
+                src={encodeURI(selectedImage.src)} 
                 alt={selectedImage.alt}
                 className="max-w-full max-h-[90vh] object-contain rounded-lg"
               />
-              <p className="text-center text-blue-900 mt-4 font-display text-lg font-bold">
+              <p className="text-center text-blue-100 mt-4 font-display text-lg font-bold">
                 {selectedImage.alt}
               </p>
             </motion.div>
             
             <button 
-              className="absolute top-4 right-4 text-blue-900 text-4xl hover:text-blue-300 transition-colors"
+              className="absolute top-4 right-4 text-white text-5xl hover:text-blue-300 transition-colors z-50 p-4"
               onClick={() => setSelectedImage(null)}
             >
               ×

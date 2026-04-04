@@ -11,15 +11,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
+    "/unsere-geschichte/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/unsere-geschichte/page.js"
+    ],
     "/rsvp/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/rsvp/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

@@ -12,7 +12,7 @@ export default function Hero() {
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Blasses Hintergrundbild */}
       <img 
-        src={hero.backgroundImage}
+        src={encodeURI(hero.backgroundImage)}
         alt="Petra und Michi Header"
         className="absolute inset-0 w-full h-full object-cover object-left opacity-50 z-0 pointer-events-none select-none"
         style={{ filter: 'blur(1px)' }}
