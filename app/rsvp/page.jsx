@@ -8,7 +8,7 @@ import { useForm, ValidationError } from '@formspree/react'
 
 export default function RsvpPage() {
   const config = useConfig()
-  const [state, handleSubmit] = useForm('mdapwrzg')
+  const [state, handleSubmit] = useForm('DEINE_NEUE_ID')
   const [formData, setFormData] = useState({ name: '', attending: '' })
 
   return (
@@ -32,7 +32,7 @@ export default function RsvpPage() {
               Eure Zusage
             </h1>
             <p className={`${config.hero?.fontSize?.date || "text-xl"} text-blue-700 max-w-xl mx-auto leading-relaxed mb-12`}>
-              Vielen Dank, dass ihr dabei seid! Teilt uns mit ob und mit wie vielen Gästen ihr kommt.
+              Vielen Dank, dass ihr dabei seid! Teilt uns mit, ob und mit wie vielen Gästen ihr kommt.
             </p>
           </motion.section>
 

@@ -27,13 +27,21 @@ export default function Details() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className={`font-display ${detailsData.fontSize?.introTitle || 'text-2xl'} md:text-3xl text-blue-900 font-bold whitespace-pre-line`}>
-            {detailsData.introTitle}
-          </p>
+          <div className="space-y-4">
+            {detailsData.introTitle.split('\n\n').filter(p => p.trim()).map((paragraph, idx) => (
+              <p key={`intro-title-${idx}`} className={`font-display ${detailsData.fontSize?.introTitle || 'text-2xl'} md:text-3xl text-blue-900 font-bold whitespace-pre-line`}>
+                {paragraph.trim()}
+              </p>
+            ))}
+          </div>
           {detailsData.introText && (
-            <p className={`font-display ${detailsData.fontSize?.introText || 'text-lg'} text-blue-900 mt-4 whitespace-pre-line`}>
-              {detailsData.introText}
-            </p>
+            <div className="mt-6 space-y-4">
+              {detailsData.introText.split('\n\n').filter(p => p.trim()).map((paragraph, idx) => (
+                <p key={`intro-text-${idx}`} className={`font-display ${detailsData.fontSize?.introText || 'text-lg'} text-blue-900 whitespace-pre-line`}>
+                  {paragraph.trim()}
+                </p>
+              ))}
+            </div>
           )}
         </motion.div>
 
@@ -64,9 +72,13 @@ export default function Details() {
                   {detail.address}
                 </p>
               )}
-              <p className={`font-display ${detailsData.fontSize?.eventDescription || 'text-base'} text-blue-900 leading-relaxed`}>
-                {detail.description}
-              </p>
+              <div className="space-y-4">
+                {detail.description.split('\n\n').filter(p => p.trim()).map((paragraph, idx) => (
+                  <p key={idx} className={`font-display ${detailsData.fontSize?.eventDescription || 'text-base'} text-blue-900 leading-relaxed whitespace-pre-line`}>
+                    {paragraph.trim()}
+                  </p>
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -88,4 +100,3 @@ export default function Details() {
     </div>
   )
 }
-
