@@ -67,6 +67,7 @@ export default function Home() {
                   RSVP
                 </button>
               </Link>
+
             </div>
             <button 
               className="md:hidden text-blue-900"
@@ -111,6 +112,7 @@ export default function Home() {
                       RSVP
                     </button>
                   </Link>
+
                 </div>
               </motion.div>
             )}
