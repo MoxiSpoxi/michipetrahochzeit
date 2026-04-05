@@ -4,12 +4,43 @@ import { useState } from 'react'
 import { motion } from "framer-motion"
 import { useConfig } from "../context/WeddingConfigContext"
 import Link from "next/link"
-import { useForm, ValidationError } from '@formspree/react'
 
 export default function RsvpPage() {
   const config = useConfig()
-  const [state, handleSubmit] = useForm('mdapwrzg')
   const [formData, setFormData] = useState({ name: '', attending: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setErrorMessage("")
+
+    const form = e.target
+    const data = new FormData(form)
+    
+    // Web3Forms benötigt den access_key im Body
+    data.append("access_key", "0177de46-4939-475e-a43c-c160dd50473a")
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data
+      })
+
+      const result = await response.json()
+      if (result.success) {
+        setIsSuccess(true)
+      } else {
+        setErrorMessage(result.message || "Etwas ist schiefgelaufen.")
+      }
+    } catch (err) {
+      setErrorMessage("Es konnte keine Verbindung aufgebaut werden.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
@@ -36,7 +67,7 @@ export default function RsvpPage() {
             </p>
           </motion.section>
 
-          {state.succeeded ? (
+          {isSuccess ? (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -89,7 +120,6 @@ export default function RsvpPage() {
                 <option value="ja">Ja, wir kommen! 🎉</option>
                 <option value="nein">Leider nein 😔</option>
               </select>
-              <ValidationError prefix="Antwort" field="attending" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -99,12 +129,10 @@ export default function RsvpPage() {
                 </p>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Anzahl Gäste*</label>
                 <input type="number" name="guests" min="1" max="10" required className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" placeholder="0" />
-                <ValidationError prefix="Gäste" field="guests" errors={state.errors} className="text-red-500 text-sm mt-1" />
               </div>
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">Email (optional)</label>
-                <input type="email" name="_replyto" className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" />
-                <ValidationError prefix="Email" field="_replyto" errors={state.errors} className="text-red-500 text-sm mt-1" />
+                <input type="email" name="email" className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" />
               </div>
             </div>
 
@@ -117,25 +145,25 @@ export default function RsvpPage() {
               <label className="block text-sm font-bold text-gray-700 mb-2">Nachricht (optional)</label>
               <textarea name="message" rows="4" className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 text-lg" placeholder="Etwas Persönliches oder Anmerkungen (z.B. Allergien)..."></textarea>
             </div>
-            <ValidationError prefix="Nachricht" field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
 
-            <input type="hidden" name="_subject" value={`Antwort von ${formData.name || 'Gästen'}`} />
+            <input type="hidden" name="subject" value={`Antwort von ${formData.name || 'Gästen'}`} />
+            <input type="hidden" name="from_name" value="Hochzeits-Website" />
 
             <motion.button 
               type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              disabled={state.submitting}
-              className={`w-full bg-gradient-to-r from-blue-900 to-blue-800 text-white font-display font-bold py-6 px-8 rounded-2xl text-xl shadow-2xl transition-all duration-300 ${state.submitting ? 'opacity-50 cursor-not-allowed' : 'hover:from-blue-800 hover:to-blue-700'}`}
+              disabled={isSubmitting}
+              className={`w-full bg-gradient-to-r from-blue-900 to-blue-800 text-white font-display font-bold py-6 px-8 rounded-2xl text-xl shadow-2xl transition-all duration-300 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:from-blue-800 hover:to-blue-700'}`}
             >
-              {state.submitting ? 'Wird gesendet...' : 'Antwort senden 💌'}
+              {isSubmitting ? 'Wird gesendet...' : 'Antwort senden 💌'}
             </motion.button>
 
-            <ValidationError errors={state.errors} className="text-red-500 text-center font-bold" />
+            {errorMessage && <p className="text-red-500 text-center font-bold">{errorMessage}</p>}
           </motion.form>
           )}
 
-          {!state.succeeded && (
+          {!isSuccess && (
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
