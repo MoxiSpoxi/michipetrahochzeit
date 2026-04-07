@@ -11,10 +11,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/rsvp/page": [
+    "/unsere-geschichte/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/rsvp/page.js"
+      "static/chunks/app/unsere-geschichte/page.js"
     ]
   }
 }
